@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bf1oumtpbem61"]
 
+[ext_resource type="Script" uid="uid://dm2yg4es2kgna" path="res://Bird/bird.gd" id="1_rg4uy"]
 [ext_resource type="Texture2D" uid="uid://cv48u5pa375i0" path="res://assets/bird1.png" id="1_teae3"]
 [ext_resource type="Texture2D" uid="uid://dwdjrdnmb4s7b" path="res://assets/bird2.png" id="2_rg4uy"]
 [ext_resource type="Texture2D" uid="uid://c1pk7jvrq3qdw" path="res://assets/bird3.png" id="3_2vl2o"]
@@ -31,7 +32,8 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_ly3s3"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
-[node name="Bird" type="CharacterBody2D" unique_id=962759131]
+[node name="Bird" type="CharacterBody2D" unique_id=962759131 groups=["bird"]]
+script = ExtResource("1_rg4uy")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1664265310]
 shape = SubResource("CircleShape2D_m4x02")
@@ -54,3 +56,7 @@ initial_velocity_min = 150.0
 initial_velocity_max = 150.0
 scale_amount_curve = SubResource("Curve_m4x02")
 color_ramp = SubResource("Gradient_ly3s3")
+
+[node name="FlySound" type="AudioStreamPlayer2D" parent="." unique_id=1558889819]
+
+[node name="ScoreSound" type="AudioStreamPlayer2D" parent="." unique_id=75065103]

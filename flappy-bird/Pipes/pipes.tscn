@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://b5j8nuqwikvpe"]
+
+[ext_resource type="PackedScene" uid="uid://cnjxmiy2i81sl" path="res://Pipes/pipe.tscn" id="1_1ynq3"]
+[ext_resource type="Script" uid="uid://dnkv45actyle0" path="res://Pipes/pipes.gd" id="1_rgsy4"]
+[ext_resource type="Texture2D" uid="uid://lgvwh760rfg3" path="res://assets/coin-frame-1.png" id="2_6pacg"]
+[ext_resource type="Texture2D" uid="uid://cdh0rbnvlfouu" path="res://assets/coin-frame-2.png" id="3_rgsy4"]
+[ext_resource type="Texture2D" uid="uid://diwlbldfo8ft4" path="res://assets/coin-frame-3.png" id="4_iymbb"]
+[ext_resource type="Texture2D" uid="uid://dx6mqx2b3odls" path="res://assets/coin-frame-4.png" id="5_x0yt3"]
+[ext_resource type="Texture2D" uid="uid://dop4awwdp6tsi" path="res://assets/coin-frame-5.png" id="6_kd75q"]
+[ext_resource type="Texture2D" uid="uid://cfn6m7a5rhkue" path="res://assets/coin-frame-6.png" id="7_btkal"]
+[ext_resource type="Texture2D" uid="uid://d0n6ial7ybtdi" path="res://assets/coin-frame-7.png" id="8_y85es"]
+[ext_resource type="Texture2D" uid="uid://dbjb0rq7w7hw7" path="res://assets/coin-frame-8.png" id="9_igyue"]
+[ext_resource type="Texture2D" uid="uid://5ta5ynsyqipo" path="res://assets/coin-frame-9.png" id="10_6i06v"]
+[ext_resource type="Texture2D" uid="uid://bg6thul6rweog" path="res://assets/coin-frame-10.png" id="11_lko66"]
+[ext_resource type="Texture2D" uid="uid://b0di8ymqckwep" path="res://assets/coin-frame-11.png" id="12_8jcgl"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m4x02"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6pacg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_rgsy4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_iymbb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_x0yt3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_kd75q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_btkal")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_y85es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_igyue")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_6i06v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_lko66")
+}, {
+"duration": 5.0,
+"texture": ExtResource("12_8jcgl")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3tovc"]
+radius = 22.0
+
+[sub_resource type="Animation" id="Animation_6pacg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.4, 0.4)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rgsy4"]
+resource_name = "coin"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.4, 0.4), Vector2(0.8, 0.8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.100000024, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iymbb"]
+_data = {
+&"RESET": SubResource("Animation_6pacg"),
+&"coin": SubResource("Animation_rgsy4")
+}
+
+[node name="Pipes" type="Node2D" unique_id=1414213913]
+script = ExtResource("1_rgsy4")
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="." unique_id=1698001902]
+
+[node name="PipeTop" parent="." unique_id=1812498709 instance=ExtResource("1_1ynq3")]
+position = Vector2(0, -90)
+rotation = 3.1415927
+
+[node name="PipeBottom" parent="." unique_id=70814242 instance=ExtResource("1_1ynq3")]
+position = Vector2(0, 90)
+
+[node name="Coin" type="Area2D" parent="." unique_id=1792905237]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Coin" unique_id=63383511]
+position = Vector2(0, -2)
+scale = Vector2(0.4, 0.4)
+sprite_frames = SubResource("SpriteFrames_m4x02")
+autoplay = "default"
+frame_progress = 0.097946934
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Coin" unique_id=180510778]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_3tovc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Coin" unique_id=1404963630]
+libraries/ = SubResource("AnimationLibrary_iymbb")
